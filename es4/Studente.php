@@ -1,14 +1,24 @@
 <?php
 include_once "./Persona.php";
 
-class Studente extends Persona {
+class Studente extends Persona implements JsonSerializable {
     // attributes
     private string $matricola;
 
     // constructors
-    public function __construct(string $nome, string $cognome, string $matricola) {
+    public function __construct(Persona $persona, string $matricola) {
         $this->matricola = $matricola;
-        parent::__construct($nome, $cognome);
+        parent::__construct($persona->getNome(), $persona->getCognome());
+    }
+
+    // methods
+    public function jsonSerialize(): array{
+        return array_merge(
+            parent::jsonSerialize(),
+            [
+                "matricola" => $this->matricola
+            ]
+        );
     }
 }
 ?>

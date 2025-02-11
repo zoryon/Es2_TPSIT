@@ -22,7 +22,8 @@ class Veicolo implements JsonSerializable {
     // methods
     public function jsonSerialize(): array {
         return [
-
+            "marca" => $this->marca,
+            "anno" => $this->anno
         ];
     }
 }
