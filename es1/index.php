@@ -1,4 +1,6 @@
 <?php
+header("Content-Type: application/json");
+
 include_once "./Alunno.php";
 
 $alunni = array();
@@ -10,8 +12,5 @@ array_push(
     new Alunno("dante", "vettori", 18), 
 );
 
-foreach($alunni as $alunno) {
-    $alunno->toString();
-}
-
+echo json_encode($alunni);
 ?>
